@@ -2,7 +2,7 @@
 当知道前序遍历、中序遍历、后序遍历中的两种遍历方式，就能够反推出二叉树的结构了。
 但是要注意一点：已知**前序遍历&后序遍历**结果时，**二叉树不能有节点的度为1！！！**
 **提醒：** 此处默认二叉树节点存储的值为int类型，其他类型，如char等可以将vector换为string等
-**例题：**[遍历问题](https://www.luogu.com.cn/problem/P1229)，[美国血统](https://www.luogu.com.cn/problem/P1827)
+**例题：**[遍历问题](https://www.luogu.com.cn/problem/P1229)，[美国血统](https://www.luogu.com.cn/problem/P1827)。
 
 ### 一、已知前&中序遍历结果
 ```cpp
