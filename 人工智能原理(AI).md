@@ -2824,8 +2824,8 @@ $$P(X^{(n+1)}=i | X^{(n)}=j, X^{(n-1)}=i_{n-1}, ..., X^{(0)}=i_0) = P_{ij}$$
 
 ### 转移矩阵
 $$
-P = \begin{pmatrix}
-P_{00} & P_{01} & \cdots \\
+\begin{pmatrix}
+P = P_{00} & P_{01} & \cdots \\
 P_{10} & P_{11} & \cdots \\
 \vdots & \vdots & \vdots
 \end{pmatrix}
@@ -2842,8 +2842,12 @@ $$
 转移矩阵：
 $$
 \begin{pmatrix}
+<<<<<<< HEAD
 P = 
 1-\alpha & \beta \\
+=======
+P =  1-\alpha & \beta \\
+>>>>>>> 49f5fd6570a3493e2e105a9e0f7ead7d98b2e52b
 \alpha & 1-\beta
 \end{pmatrix}
 $$
@@ -2905,7 +2909,10 @@ $$X^{(n+1)} = P X^{(n)} = P^{(n+1)} X^{(0)} = P^n X^{(0)}$$
 > **折扣**：未来的奖励价值低于现在的奖励，价值按指数衰减。
 
 **折扣效用公式**：
-$$U([r_0, r_1, r_2, ...]) = r_0 + \gamma r_1 + \gamma^2 r_2 + ...=\sum{\gamma^{t}r_t}$$
+
+$$
+U([r_0, r_1, r_2, ...]) = r_0 + \gamma r_1 + \gamma^2 r_2 + ...=\sum{\gamma^{t}r_t}
+$$
 
 **变量说明**：
 - $U$：序列的总效用
@@ -2935,6 +2942,7 @@ $$U([r_0, r_1, r_2, ...]) = r_0 + \gamma r_1 + \gamma^2 r_2 + ...=\sum{\gamma^{t
 | **吸收状态** | 保证最终会到达终止状态           |
 
 **折扣下的最大效用**：
+
 $$
 \begin{align}
 U([r_0, ..., r_\infty]) = \sum_{t=0}^{\infty} \gamma^t r_t \leq \frac{R_{max}}{1-\gamma}
