@@ -2975,7 +2975,9 @@ $$
 ### Bellman 方程(3个)
 #### 1、状态值与 Q 值的关系
 
-> $V^*(s) = \max_a Q^*(s,a)$
+$$
+V^*(s) = max_a Q^*(s,a)
+$$
 
 **变量说明**：
 - $V^*(s)$：状态 s 的最优值
@@ -2986,7 +2988,7 @@ $$
 
 #### 2、Q 值的递归定义
 
-> $Q^*(s, a) = \sum_{s'} T(s, a, s') \left[ R(s, a, s') + \gamma V^*(s') \right]$
+$$ Q^*(s,a) = \operatorname{\sum}_{s'} T(s,a,s') \big[ R(s,a,s') + \operatorname{\gamma} V^*(s') \big] $$
 
 **变量说明**：
 - $Q^*(s, a)$：在状态 s 采取行动 a 的 Q 值
@@ -3000,7 +3002,7 @@ $$
 
 #### 3、合并后的 Bellman 方程
 
-> $V^*(s) = \max_a \sum_{s'} T(s, a, s') \left[ R(s, a, s') + \gamma V^*(s') \right]$
+$$ V^*(s) = \operatorname{\max}_a \operatorname{\sum}_{s'} T(s, a, s') \big[ R(s, a, s') + \operatorname{\gamma} V^*(s') \big] $$
 
 > 这就是 Bellman 方程，刻画了最优值之间的递归关系。
 
@@ -3215,13 +3217,13 @@ $$
 
 ### 从 V 值提取策略
 
-> $\pi^*(s) = \arg\max_a \sum_{s'} T(s, a, s') \left[ R(s, a, s') + \gamma V^*(s') \right]$
+$$ \pi^*(s) = \operatorname{argmax}_a \operatorname{\sum}_{s'} T(s, a, s') \big[ R(s, a, s') + \operatorname{\gamma} V^*(s') \big] $$
 
 > 有了 V 值，要选行动还需要做一步 $expectimax$ 计算。
 
 ### 从 Q 值提取策略
 
-> $\pi^*(s) = \arg\max_a Q^*(s, a)$
+$$ \pi^*(s) = \operatorname{argmax}_a Q^*(s, a) $$
 
 > 有了 Q 值，选行动就很简单了 —— 直接选 *Q 值最大*的行动就行！
 
