@@ -2842,12 +2842,7 @@ $$
 转移矩阵：
 $$
 \begin{pmatrix}
-<<<<<<< HEAD
-P = 
 1-\alpha & \beta \\
-=======
-P =  1-\alpha & \beta \\
->>>>>>> 49f5fd6570a3493e2e105a9e0f7ead7d98b2e52b
 \alpha & 1-\beta
 \end{pmatrix}
 $$
@@ -2930,7 +2925,7 @@ $$
 ### 为什么折扣？
 1. **数学上保证收敛**：无限序列的和是有限的
 2. **符合直觉**：人们通常偏好现在的奖励
-3. **可以理解为**：每一步有 $\gamma$ 的概率继续，$1-\gamma$ 的概率结束
+3. **可以理解为**：每一步有 $\gamma$ 的概率继续， $1-\gamma$ 的概率结束
 
 ### 无限效用问题
 >如果游戏永远进行下去，奖励会无限大吗？解决方案：
@@ -2973,7 +2968,9 @@ $$
 ### Bellman 方程(3个)
 #### 1、状态值与 Q 值的关系
 
-$$V^*(s) = \max_a Q^*(s, a)$$
+$$
+V^{*}(s) = \max_a Q^{*}(s, a)
+$$
 
 **变量说明**：
 - $V^*(s)$：状态 s 的最优值
@@ -2985,7 +2982,7 @@ $$V^*(s) = \max_a Q^*(s, a)$$
 #### 2、Q 值的递归定义
 
 $$
-Q^*(s, a) = \sum_{s'} T(s, a, s') \left[ R(s, a, s') + \gamma V^*(s') \right](概率 \times 奖励)
+Q^{*}(s, a) = \sum_{s'} T(s, a, s') \left[ R(s, a, s') + \gamma V^{*}(s') \right](概率 \times 奖励)
 $$
 
 **变量说明**：
@@ -3001,7 +2998,7 @@ $$
 #### 3、合并后的 Bellman 方程
 
 $$
-V^*(s) = \max_a \sum_{s'} T(s, a, s') \left[ R(s, a, s') + \gamma V^*(s') \right]
+V^{*}(s) = \max_a \sum_{s'} T(s, a, s') \left[ R(s, a, s') + \gamma V^{*}(s') \right]
 $$
 
 > 这就是 Bellman 方程，刻画了最优值之间的递归关系。
@@ -3218,14 +3215,14 @@ $$
 ### 从 V 值提取策略
 
 $$
-\pi^*(s) = \arg\max_a \sum_{s'} T(s, a, s') \left[ R(s, a, s') + \gamma V^*(s') \right]
+\pi^{*}(s) = \arg\max_a \sum_{s'} T(s, a, s') \left[ R(s, a, s') + \gamma V^{*}(s') \right]
 $$
 
 > 有了 V 值，要选行动还需要做一步 $expectimax$ 计算。
 
 ### 从 Q 值提取策略
 $$
-\pi^*(s) = \arg\max_a Q^*(s, a)
+\pi^{*}(s) = \arg\max_a Q^{*}(s, a)
 $$
 
 > 有了 Q 值，选行动就很简单了 —— 直接选 *Q 值最大*的行动就行！
@@ -3344,12 +3341,12 @@ $$
 
 ### 转移概率估计
 
-$$\widehat{T}(s, a, s') = \frac{\#(s, a, s')}{\#(s, a)}$$
+$$\widehat{T}(s, a, s') = \frac{\text{count}(s, a, s')}{\text{count}(s, a)}$$
 
 **变量说明**：
 - $\widehat{T}(s, a, s')$：估计的转移概率
-- $\#(s, a, s')$：从状态 $s$ 采取行动 $a$ 到达 $s'$ 的次数
-- $\#(s, a)$：从状态 $s$ 采取行动 $a$ 的总次数
+- $\text{count}(s, a, s')$：从状态 $s$ 采取行动 $a$ 到达 $s'$ 的次数
+- $\text{count}(s, a)$：从状态 $s$ 采取行动 $a$ 的总次数
 
 > 用频率估计概率。
 
@@ -3361,8 +3358,8 @@ $$\widehat{T}(s, a, s') = \frac{\#(s, a, s')}{\#(s, a)}$$
 
 $$
 \begin{cases}
-\widehat{T}(C, east, A) = \frac{\#(C, east, A)}{\#(C, east)} = \frac{1}{4} = 0.25\\
-\widehat{T}(C, east, D) = \frac{\#(C, east, D)}{\#(C, east)} = \frac{3}{4} = 0.75
+\widehat{T}(C, east, A) = \frac{\text{count}(C, east, A)}{\text{count}(C, east)} = \frac{1}{4} = 0.25\\
+\widehat{T}(C, east, D) = \frac{\text{count}(C, east, D)}{\text{count}(C, east)} = \frac{3}{4} = 0.75
 \end{cases}
 $$
 
