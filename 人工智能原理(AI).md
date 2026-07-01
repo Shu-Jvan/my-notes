@@ -928,6 +928,7 @@ function GRAPH-SEARCH(problem, fringe) return a solution, or failure
 | **变量** | 每个空格子                |
 | **值域** | {1,2,...,9}          |
 | **约束** | 每行、每列、每个 3×3 区域数字都不同 |
+
 ![](images/AI/Sudoku.png)
 
 ---
@@ -1230,10 +1231,15 @@ function REMOVE-INCONSISTENT-VALUES(Xᵢ, Xⱼ) returns true iff(当且仅当) s
 #### 算法
 **步骤 1：反向传递弧一致性**
 - 从 i=n 到 i=2，对所有弧 Parent(Xᵢ) → Xᵢ 强制执行弧一致性，即*从叶子节点开始，往根节点的方向走*，对每一条 "父节点 → 子节点" 的弧，都检查*父节点的每一个值*，看子节点的值域中，*有没有至少一个值*能和它配对（满足约束）。
+
 反向传递前：
+
 ![](images/AI/Structure：Tree%20for%20CSP(step-1).png)
+
 反向传递后：
+
 ![](images/AI/Structure：Tree%20for%20CSP(step-2).png)
+
 **步骤 2：正向赋值**
 - 从 X₁ 到 Xₙ，给每个 Xi 赋一个与父节点一致的值
 ### 复杂度
@@ -2774,6 +2780,7 @@ D  2    4    2    ∞
 - 10% 的时间，偏向左边
 - 10% 的时间，偏向右边
 - 如果前方是墙，原地不动
+
 ![](images/AI/Grid-World.png)
 
 ### MDP 的组成
@@ -2968,9 +2975,7 @@ $$
 ### Bellman 方程(3个)
 #### 1、状态值与 Q 值的关系
 
-$$
-V^{*}(s) = \max_a Q^{*}(s, a)
-$$
+$$ V^{*}(s) = \max_a Q^{*}(s, a) $$
 
 **变量说明**：
 - $V^*(s)$：状态 s 的最优值
@@ -3493,7 +3498,7 @@ $$
 
 #### TD 学习示例
 ![](images/AI/TD-Learning.png)
-**设定**： $\gamma = 1$，$\alpha = 1/2$
+**设定**： $\gamma = 1，\alpha = 1/2$
 
 **初始状态**：
 - $V(A) = 0, V(B) = 0, V(C) = 0, V(D) = 8, V(E) = 0$
