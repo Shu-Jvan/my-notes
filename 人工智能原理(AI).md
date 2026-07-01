@@ -874,7 +874,7 @@ function GRAPH-SEARCH(problem, fringe) return a solution, or failure
 ### 示例 1：地图着色 (Map Coloring)
 
 **问题**：给地图上的区域着色，相邻区域颜色不同
-![](Map%20Coloring.png)
+![](images/AI/Map%20Coloring.png)
 
 |   组成   |               内容               |
 | :----: | :----------------------------: |
@@ -928,7 +928,7 @@ function GRAPH-SEARCH(problem, fringe) return a solution, or failure
 | **变量** | 每个空格子                |
 | **值域** | {1,2,...,9}          |
 | **约束** | 每行、每列、每个 3×3 区域数字都不同 |
-![](Sudoku.png)
+![](images/AI/Sudoku.png)
 
 ---
 
@@ -1027,7 +1027,7 @@ function GRAPH-SEARCH(problem, fringe) return a solution, or failure
 - 固定顺序 → 更好的分支因子！
 - 例如：{WA=red 然后 NT=green} 和 {NT=green 然后 WA=red} 是一样的
 - 每步只考虑给一个变量赋值
-![](Map%20Coloring(Backtracking).png)
+![](images/AI/Map%20Coloring(Backtracking).png)
 #### 思想 2：边做边检查约束
 - 只考虑不与已有赋值冲突的值
 - "增量式目标测试"
@@ -1079,7 +1079,7 @@ function RECURSIVE-BACKTRACKING(assignment, csp) returns solution or failure
 - 检查所有相邻的未赋值变量
 - 从它们的值域中删掉与新赋值冲突的值
 - 如果某个变量的值域空了 → 立即回溯
-![](Map%20Coloring(Filter-Forward-Checking).png)
+![](images/AI/Map%20Coloring(Filter-Forward-Checking).png)
 
 ### 效果
 - 比朴素回溯更早检测失败
@@ -1106,7 +1106,7 @@ function RECURSIVE-BACKTRACKING(assignment, csp) returns solution or failure
 #### 怎么做
 - 如果 X 失去了一个值，X 的所有邻居都需要重新检查
 - 反复检查直到没有变化
-![](Map%20Coloring(Arc-Consistency).png)
+![](images/AI/Map%20Coloring(Arc-Consistency).png)
 
 ### AC-3(Arc Consistency version-3) 算法
 ```txt
@@ -1231,9 +1231,9 @@ function REMOVE-INCONSISTENT-VALUES(Xᵢ, Xⱼ) returns true iff(当且仅当) s
 **步骤 1：反向传递弧一致性**
 - 从 i=n 到 i=2，对所有弧 Parent(Xᵢ) → Xᵢ 强制执行弧一致性，即*从叶子节点开始，往根节点的方向走*，对每一条 "父节点 → 子节点" 的弧，都检查*父节点的每一个值*，看子节点的值域中，*有没有至少一个值*能和它配对（满足约束）。
 反向传递前：
-![](Structure：Tree%20for%20CSP(step-1).png)
+![](images/AI/Structure：Tree%20for%20CSP(step-1).png)
 反向传递后：
-![](Structure：Tree%20for%20CSP(step-2).png)
+![](images/AI/Structure：Tree%20for%20CSP(step-2).png)
 **步骤 2：正向赋值**
 - 从 X₁ 到 Xₙ，给每个 Xi 赋一个与父节点一致的值
 ### 复杂度
@@ -2774,7 +2774,7 @@ D  2    4    2    ∞
 - 10% 的时间，偏向左边
 - 10% 的时间，偏向右边
 - 如果前方是墙，原地不动
-![](Grid-World.png)
+![](images/AI/Grid-World.png)
 
 ### MDP 的组成
 | 组成       | 符号            | 说明                                     |
@@ -2968,7 +2968,7 @@ $$
 | **最优策略** | $\pi^*(s)$  | 状态 s 下的最优行动                |
 
 ### 状态与 Q 状态
-![](Values-of-States.png)
+![](images/AI/Values-of-States.png)
 
 ### Bellman 方程(3个)
 #### 1、状态值与 Q 值的关系
@@ -3067,7 +3067,7 @@ $\| BV - BV' \| \leq \gamma \| V - V' \|$
 - 两个行动：Slow（慢开）、Fast（快开）
 - 快开奖励更高，但容易过热
 - 过热 = 游戏结束，大惩罚
-![](Racing.png)
+![](images/AI/Racing.png)
 
 #### 转移与奖励
 | 当前状态       | 行动     | 下一个状态      | 概率  | 奖励  |
@@ -3355,7 +3355,7 @@ $$\widehat{T}(s, a, s') = \frac{\#(s, a, s')}{\#(s, a)}$$
 
 ### 示例：网格世界
 **观测到的片段**：
-![](Model-Based-Learning(1).png)
+![](images/AI/Model-Based-Learning(1).png)
 
 **计算转移概率**：
 
@@ -3366,7 +3366,7 @@ $$
 \end{cases}
 $$
 
-![](Model-Based-Learning(2).png)
+![](images/AI/Model-Based-Learning(2).png)
 ### 优缺点
 | 优点               | 缺点        |
 | ---------------- | --------- |
@@ -3495,7 +3495,7 @@ $$
 > 每次观察到一个转移，就把 V(s) 往 "更符合邻居 V(s')" 的方向移动一点点。
 
 #### TD 学习示例
-![](TD-Learning.png)
+![](images/AI/TD-Learning.png)
 **设定**： $\gamma = 1$，$\alpha = 1/2$
 
 **初始状态**：
@@ -3705,7 +3705,7 @@ $$
 > 直观理解：如果结果出乎意料地好，就增加活跃特征的权重；如果出乎意料地差，就减少。
 
 ### 示例：Q-Pacman
-![](Q-Pacman.png)
+![](images/AI/Q-Pacman.png)
 > **初始 Q 函数**： $Q(s, a) = 4.0f_{DOT}(s, a) - 1.0f_{GST}(s, a)$
 
 **一次转移**：
