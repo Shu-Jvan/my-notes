@@ -874,7 +874,7 @@ function GRAPH-SEARCH(problem, fringe) return a solution, or failure
 ### 示例 1：地图着色 (Map Coloring)
 
 **问题**：给地图上的区域着色，相邻区域颜色不同
-![[Map Coloring.png]]
+![](Map%20Coloring.png)
 
 |   组成   |               内容               |
 | :----: | :----------------------------: |
@@ -928,7 +928,7 @@ function GRAPH-SEARCH(problem, fringe) return a solution, or failure
 | **变量** | 每个空格子                |
 | **值域** | {1,2,...,9}          |
 | **约束** | 每行、每列、每个 3×3 区域数字都不同 |
-![[Sudoku.png]]
+![](Sudoku.png)
 
 ---
 
@@ -1027,7 +1027,7 @@ function GRAPH-SEARCH(problem, fringe) return a solution, or failure
 - 固定顺序 → 更好的分支因子！
 - 例如：{WA=red 然后 NT=green} 和 {NT=green 然后 WA=red} 是一样的
 - 每步只考虑给一个变量赋值
-![[Map Coloring(Backtracking).png]]
+![](Map%20Coloring(Backtracking).png)
 #### 思想 2：边做边检查约束
 - 只考虑不与已有赋值冲突的值
 - "增量式目标测试"
@@ -1079,7 +1079,8 @@ function RECURSIVE-BACKTRACKING(assignment, csp) returns solution or failure
 - 检查所有相邻的未赋值变量
 - 从它们的值域中删掉与新赋值冲突的值
 - 如果某个变量的值域空了 → 立即回溯
-![[Map Coloring(Filter-Forward-Checking).png]]
+![](Map%20Coloring(Filter-Forward-Checking).png)
+
 ### 效果
 - 比朴素回溯更早检测失败
 - 避免了很多无用的搜索
@@ -1105,7 +1106,7 @@ function RECURSIVE-BACKTRACKING(assignment, csp) returns solution or failure
 #### 怎么做
 - 如果 X 失去了一个值，X 的所有邻居都需要重新检查
 - 反复检查直到没有变化
-![[Map Coloring(Arc-Consistency).png]]
+![](Map%20Coloring(Arc-Consistency).png)
 
 ### AC-3(Arc Consistency version-3) 算法
 ```txt
@@ -1230,9 +1231,9 @@ function REMOVE-INCONSISTENT-VALUES(Xᵢ, Xⱼ) returns true iff(当且仅当) s
 **步骤 1：反向传递弧一致性**
 - 从 i=n 到 i=2，对所有弧 Parent(Xᵢ) → Xᵢ 强制执行弧一致性，即*从叶子节点开始，往根节点的方向走*，对每一条 "父节点 → 子节点" 的弧，都检查*父节点的每一个值*，看子节点的值域中，*有没有至少一个值*能和它配对（满足约束）。
 反向传递前：
-![[Structure：Tree for CSP(step-1).png]]
+![](Structure：Tree%20for%20CSP(step-1).png)
 反向传递后：
-![[Structure：Tree for CSP(step-2).png]]
+![](Structure：Tree%20for%20CSP(step-2).png)
 **步骤 2：正向赋值**
 - 从 X₁ 到 Xₙ，给每个 Xi 赋一个与父节点一致的值
 ### 复杂度
@@ -2582,7 +2583,7 @@ pₖ(i,j) = ─────────────────────
 
 #### 距离矩阵
 ```
-    A    B    C    D
+   A    B    C    D
 A  ∞    3    1    2
 B  3    ∞    5    4
 C  1    5    ∞    2
@@ -2773,7 +2774,7 @@ D  2    4    2    ∞
 - 10% 的时间，偏向左边
 - 10% 的时间，偏向右边
 - 如果前方是墙，原地不动
-![[Grid-World.png]]
+![](Grid-World.png)
 
 ### MDP 的组成
 | 组成       | 符号            | 说明                                     |
@@ -2840,8 +2841,8 @@ $$
 
 转移矩阵：
 $$
-P = 
 \begin{pmatrix}
+P = 
 1-\alpha & \beta \\
 \alpha & 1-\beta
 \end{pmatrix}
@@ -2912,7 +2913,7 @@ $$U([r_0, r_1, r_2, ...]) = r_0 + \gamma r_1 + \gamma^2 r_2 + ...=\sum{\gamma^{t
 - $\gamma$：折扣因子，$0 < \gamma < 1$
 - $t$：时间步
 
-**示例**：$\gamma = 0.5$
+**示例**： $\gamma = 0.5$
 - 现在的 1 分价值 $\gamma$= 1
 - 下一步的 1 分价值 $\gamma$= 0.5
 - 下两步的 1 分价值 $\gamma^{2}$ = 0.25
@@ -2935,7 +2936,9 @@ $$U([r_0, r_1, r_2, ...]) = r_0 + \gamma r_1 + \gamma^2 r_2 + ...=\sum{\gamma^{t
 
 **折扣下的最大效用**：
 $$
+\begin{align}
 U([r_0, ..., r_\infty]) = \sum_{t=0}^{\infty} \gamma^t r_t \leq \frac{R_{max}}{1-\gamma}
+\end{align}
 $$
 
 **变量说明**：
@@ -2957,10 +2960,11 @@ $$
 | **最优策略** | $\pi^*(s)$  | 状态 s 下的最优行动                |
 
 ### 状态与 Q 状态
-![[Values-of-States.png]]
+![](Values-of-States.png)
 
 ### Bellman 方程(3个)
 #### 1、状态值与 Q 值的关系
+
 $$V^*(s) = \max_a Q^*(s, a)$$
 
 **变量说明**：
@@ -2971,6 +2975,7 @@ $$V^*(s) = \max_a Q^*(s, a)$$
 > 状态的最优值 = 最好的那个行动的 Q 值
 
 #### 2、Q 值的递归定义
+
 $$
 Q^*(s, a) = \sum_{s'} T(s, a, s') \left[ R(s, a, s') + \gamma V^*(s') \right](概率 \times 奖励)
 $$
@@ -2986,6 +2991,7 @@ $$
 > Q 值 = 即时奖励 + 折扣后的未来值，按概率加权平均
 
 #### 3、合并后的 Bellman 方程
+
 $$
 V^*(s) = \max_a \sum_{s'} T(s, a, s') \left[ R(s, a, s') + \gamma V^*(s') \right]
 $$
@@ -2997,13 +3003,16 @@ $$
 ## 六、值迭代 (Value Iteration)
 
 ### 基本思想
+
 > 从初始值开始，反复应用 Bellman 更新，直到收敛到最优值。
 
 ### 算法
-**初始化**：$V_0(s) = 0$
+
+**初始化**： $V_0(s) = 0$
 > 没有时间步剩余，奖励和为 0
 
 **迭代更新**：
+
 $$
 V_{k+1}(s) \leftarrow \max_a \sum_{s'} T(s, a, s') \left[ R(s, a, s') + \gamma V_k(s') \right]
 $$
@@ -3018,7 +3027,7 @@ $$
 - $\sum_{s'}$：对所有的“下一个状态”求和
 
 ### 复杂度
-> 每次迭代：$O(S^2 A)$
+> 每次迭代： $O(S^2 A)$
 
 **说明**：
 - S：状态数量
@@ -3050,7 +3059,7 @@ $\| BV - BV' \| \leq \gamma \| V - V' \|$
 - 两个行动：Slow（慢开）、Fast（快开）
 - 快开奖励更高，但容易过热
 - 过热 = 游戏结束，大惩罚
-![[Racing.png]]
+![](Racing.png)
 
 #### 转移与奖励
 | 当前状态       | 行动     | 下一个状态      | 概率  | 奖励  |
@@ -3074,23 +3083,23 @@ $$
 
 ##### 第 1 次迭代（假设 $\gamma = 0.5$）
 **Cool 状态**：
-Slow 行动的值：$1.0 \times [1 + 0.5 \times 0] = 1$
-Fast 行动的值：$0.5 \times [2 + 0.5 \times 0] + 0.5 \times [2 + 0.5 \times 0] = 2$
-> 取最大值：$V_1(Cool) = \max(1, 2) = 2$
+Slow 行动的值： $1.0 \times [1 + 0.5 \times 0] = 1$
+Fast 行动的值： $0.5 \times [2 + 0.5 \times 0] + 0.5 \times [2 + 0.5 \times 0] = 2$
+> 取最大值： $V_1(Cool) = \max(1, 2) = 2$
 
 **Warm 状态**：
-Slow 行动的值：$0.5 \times [1 + 0.5 \times 0] + 0.5 \times [1 + 0.5 \times 0] = 1$
-Fast 行动的值：$1.0 \times [-10 + 0.5 \times 0] = -10$
-> 取最大值：$V_1(Warm) = \max(1, -10) = 1$
+Slow 行动的值： $0.5 \times [1 + 0.5 \times 0] + 0.5 \times [1 + 0.5 \times 0] = 1$
+Fast 行动的值： $1.0 \times [-10 + 0.5 \times 0] = -10$
+> 取最大值： $V_1(Warm) = \max(1, -10) = 1$
 
 ##### 第 2 次迭代
 **Cool 状态**：
-Slow：$1.0 \times [1 + 0.5 \times 2] = 2$
-Fast：$0.5 \times [2 + 0.5 \times 2] + 0.5 \times [2 + 0.5 \times 1] =  1.5 + 1.25 = 2.75$
+Slow： $1.0 \times [1 + 0.5 \times 2] = 2$
+Fast： $0.5 \times [2 + 0.5 \times 2] + 0.5 \times [2 + 0.5 \times 1] =  1.5 + 1.25 = 2.75$
 > $V_2(Cool) = \max(2, 2.75) = 2.75$
 
 **Warm 状态**：
-Slow：$0.5 \times [1 + 0.5 \times 2] + 0.5 \times [1 + 0.5 \times 1] =  1 + 0.75 = 1.75$
+Slow： $0.5 \times [1 + 0.5 \times 2] + 0.5 \times [1 + 0.5 \times 1] =  1 + 0.75 = 1.75$
 > $V_2(Warm) = \max(1.75, -10) = 1.75$
 
 > 每次迭代，值都在更新，逐渐接近真实的最优值。
@@ -3141,6 +3150,7 @@ $$
 
 #### 策略评估的精确解法
 因为没有 max，这是一个线性方程组，可以直接求解：
+
 $$
 \begin{cases}
 V^\pi = R + \gamma P^\pi V^\pi \\
@@ -3159,6 +3169,7 @@ $$
 
 ### 策略改进 (Policy Improvement)
 > 有了当前策略的值，用一步前瞻找更好的策略。
+
 $$
 \pi_{i+1}(s) = \arg\max_a \sum_{s'} T(s, a, s') \left[ R(s, a, s') + \gamma V^{\pi_i}(s') \right]
 $$
@@ -3173,10 +3184,10 @@ $$
 ### 策略迭代完整算法
 1. 初始化一个策略 $π_0$（比如随机）
 2. 重复：
-   a. 策略评估：计算 $V^π$（迭代或直接求解）
-   b. 策略改进：$π' = policy-extraction(V^π)$
-   c. 如果 $π' == π$，停止（收敛）
-   d. 否则 $π = π'$，继续
+   - 策略评估：计算 $V^π$（迭代或直接求解）
+   - 策略改进： $π' = policy-extraction(V^π)$
+   - 如果 $π' == π$，停止（收敛）
+   - 否则 $π = π'$，继续
 
 ---
 
@@ -3197,15 +3208,18 @@ $$
 ## 九、从值到行动
 
 ### 从 V 值提取策略
+
 $$
 \pi^*(s) = \arg\max_a \sum_{s'} T(s, a, s') \left[ R(s, a, s') + \gamma V^*(s') \right]
 $$
+
 > 有了 V 值，要选行动还需要做一步 $expectimax$ 计算。
 
 ### 从 Q 值提取策略
 $$
 \pi^*(s) = \arg\max_a Q^*(s, a)
 $$
+
 > 有了 Q 值，选行动就很简单了 —— 直接选 *Q 值最大*的行动就行！
 
 > **重要教训**：从 Q 值选行动比从 V 值选行动容易得多！
@@ -3321,6 +3335,7 @@ $$
 2. **第二步**：把学到的模型当真的，用值迭代或策略迭代求解
 
 ### 转移概率估计
+
 $$\widehat{T}(s, a, s') = \frac{\#(s, a, s')}{\#(s, a)}$$
 
 **变量说明**：
@@ -3332,16 +3347,18 @@ $$\widehat{T}(s, a, s') = \frac{\#(s, a, s')}{\#(s, a)}$$
 
 ### 示例：网格世界
 **观测到的片段**：
-![[Model-Based-Learning(1).png]]
+![](Model-Based-Learning(1).png)
 
 **计算转移概率**：
+
 $$
 \begin{cases}
 \widehat{T}(C, east, A) = \frac{\#(C, east, A)}{\#(C, east)} = \frac{1}{4} = 0.25\\
 \widehat{T}(C, east, D) = \frac{\#(C, east, D)}{\#(C, east)} = \frac{3}{4} = 0.75
 \end{cases}
 $$
-![[Model-Based-Learning(2).png]]
+
+![](Model-Based-Learning(2).png)
 ### 优缺点
 | 优点               | 缺点        |
 | ---------------- | --------- |
@@ -3364,13 +3381,13 @@ $$
 | **无模型**  | 直接对样本取平均           |
 
 ### 🤜被动强化学习 vs 主动强化学习
-| 特性       |   被动强化学习    |     主动强化学习     |
-| -------- | :---------: | :------------: |
-| **目标**   |   评估给定策略    |     学习最优策略     |
-| **行动选择** |   固定策略决定    |    智能体自己决定     |
-| **探索**   |     不需要     | 需要（探索 vs 利用权衡） |
-| **算法**   | 直接评估、$TD$学习 | $Q$学习、$SARSA$  |
-| **自主性**  |   低（只评估）    |    高（学习并行动）    |
+| 特性       |    被动强化学习     |     主动强化学习      |
+| -------- | :-----------: | :-------------: |
+| **目标**   |    评估给定策略     |     学习最优策略      |
+| **行动选择** |    固定策略决定     |     智能体自己决定     |
+| **探索**   |      不需要      | 需要（探索 vs 利用权衡）  |
+| **算法**   | 直接评估、 $TD$ 学习 | $Q$ 学习、 $SARSA$ |
+| **自主性**  |    低（只评估）     |    高（学习并行动）     |
 
 ---
 
@@ -3420,6 +3437,7 @@ $$
 
 #### 运行平均 (Running Average)
 **普通平均**：
+
 $$
 \mu_n = \frac{(n-1) \cdot \mu_{n-1} + x_n}{n}
 $$
@@ -3439,12 +3457,12 @@ $$
 - $\mu_n$：更新后的平均值
 - $\mu_{n-1}$：旧的平均值
 - $x_n$：新样本
-- $\alpha$：学习率（步长），$0 < \alpha < 1$
+- $\alpha$：学习率（步长）， $0 < \alpha < 1$
 
 > 旧样本的权重按指数衰减，越新的样本权重越大。
 
 #### TD 学习更新规则
-> **样本值**：$sample = R(s, \pi(s), s') + \gamma V^\pi(s')$
+> **样本值**： $sample = R(s, \pi(s), s') + \gamma V^\pi(s')$
 
 **变量说明**：
 - sample：对 $V^\pi(s)$ 的一次采样估计
@@ -3469,13 +3487,17 @@ $$
 > 每次观察到一个转移，就把 V(s) 往 "更符合邻居 V(s')" 的方向移动一点点。
 
 #### TD 学习示例
-![[TD-Learning.png]]
-> **设定**：$\gamma = 1$，$\alpha = 1/2$
-**初始状态**：$V(A) = 0, V(B) = 0, V(C) = 0, V(D) = 8, V(E) = 0$
+![](TD-Learning.png)
+**设定**： $\gamma = 1$，$\alpha = 1/2$
+
+**初始状态**：
+- $V(A) = 0, V(B) = 0, V(C) = 0, V(D) = 8, V(E) = 0$
+
 **第一次转移**：{B, east, C, -2}
-$V(B) \leftarrow (1-0.5) \times 0 + 0.5 \times [-2 + 1.0 \times 0] = -1$
+- $V(B) \leftarrow (1-0.5) \times 0 + 0.5 \times [-2 + 1.0 \times 0] = -1$
+
 **第二次转移**：{C, east, D, -2}
-$V(C) \leftarrow (1-0.5) \times 0 + 0.5 \times [-2 + 1.0 \times 8] = 0.5 \times 6 = 3$
+- $V(C) \leftarrow (1-0.5) \times 0 + 0.5 \times [-2 + 1.0 \times 8] = 0.5 \times 6 = 3$
 
 #### TD 学习的特点
 | 特点           | 说明                             |
@@ -3487,12 +3509,14 @@ $V(C) \leftarrow (1-0.5) \times 0 + 0.5 \times [-2 + 1.0 \times 8] = 0.5 \times 
 
 ### TD 值学习的问题
 > 学习到了 $V$ 值，但要选行动还需要 $T$ 和 $R$！
+
 $$
 \begin{cases}
 \pi(s) = \arg\max_a Q(s, a) \\
 Q(s, a) = \sum_{s'} T(s, a, s') [R(s, a, s') + \gamma V(s')]
 \end{cases}
 $$
+
 >**解决方案**：直接学习 $Q$ 值，而不是 $V$ 值！
 - $\arg\max_a$：找出*使表达式最大*的那个行动
 
@@ -3504,12 +3528,15 @@ $$
 > 不知道 $T$ 和 $R$，智能体*自己选择行动*，目标是学习最优策略/最优值。
 
 ### Q 值迭代回顾
+
 **值迭代**：
+
 $$
 V_{k+1}(s) \leftarrow \max_a \sum_{s'} T(s, a, s') [R(s, a, s') + \gamma V_k(s')]
 $$
 
 **Q 值迭代**：
+
 $$
 Q_{k+1}(s, a) \leftarrow \sum_{s'} T(s, a, s') [R(s, a, s') + \gamma \max_{a'} Q_k(s', a')]
 $$
@@ -3524,12 +3551,12 @@ $$
 ### Q 学习更新规则
 > **基本思想**：用采样代替期望，用运行平均代替精确计算。
 
-> **样本值**：$sample = R(s, a, s') + \gamma \max_{a'} Q(s', a')$
+> **样本值**： $sample = R(s, a, s') + \gamma \max_{a'} Q(s', a')$
 
-> **更新规则**：$Q(s, a) \leftarrow (1-\alpha) Q(s, a) + \alpha \cdot sample$
+> **更新规则**： $Q(s, a) \leftarrow (1-\alpha) Q(s, a) + \alpha \cdot sample$
 
 **变量说明**：
-- $Q(s, a)$：$Q$ 值的当前估计
+- $Q(s, a)$： $Q$ 值的当前估计
 - $\alpha$：学习率
 - $sample$：采样得到的新估计
 
@@ -3576,6 +3603,7 @@ $$
 
 #### 方法二：探索函数 (Exploration Function)
 > **思想**：给访问次数少的状态——行动对一个 "乐观奖励"。
+
 $$
 f(u, n) = u + \frac{k}{\sqrt{n}}
 $$
@@ -3588,7 +3616,7 @@ $$
 
 > 访问次数越少，"奖励" 越高，鼓励去探索。
 
->**修改后的 Q 更新**：$sample = R(s, a, s') + \gamma \max_{a'} f(Q(s', a'), n(s', a'))$
+>**修改后的 Q 更新**： $sample = R(s, a, s') + \gamma \max_{a'} f(Q(s', a'), n(s', a'))$
 
 **变量说明**：
 - $f(Q(s', a'), n(s', a'))$：下一状态的乐观值
@@ -3649,7 +3677,7 @@ $$
 > 缺点：相似特征的状态可能实际差异很大。
 
 ### 近似 Q 学习更新
-> **差值**：$difference = \left[r + \gamma \max_{a'} Q(s', a')\right] - Q(s, a)$
+> **差值**： $difference = \left[r + \gamma \max_{a'} Q(s', a')\right] - Q(s, a)$
 
 **变量说明**：
 - $difference$：$TD$ 误差
@@ -3658,7 +3686,7 @@ $$
 - $\max_{a'} Q(s', a')$：下一状态的最优 $Q$ 值
 - $Q(s, a)$：当前 $Q$ 值估计
 
-> **权重更新**：$w_i \leftarrow w_i + \alpha \cdot difference \cdot f_i(s, a)$
+> **权重更新**： $w_i \leftarrow w_i + \alpha \cdot difference \cdot f_i(s, a)$
 
 **变量说明**：
 - $w_i$：第 $i$ 个特征的权重
@@ -3669,8 +3697,8 @@ $$
 > 直观理解：如果结果出乎意料地好，就增加活跃特征的权重；如果出乎意料地差，就减少。
 
 ### 示例：Q-Pacman
-![[Q-Pacman.png]]
-> **初始 Q 函数**：$Q(s, a) = 4.0f_{DOT}(s, a) - 1.0f_{GST}(s, a)$
+![](Q-Pacman.png)
+> **初始 Q 函数**： $Q(s, a) = 4.0f_{DOT}(s, a) - 1.0f_{GST}(s, a)$
 
 **一次转移**：
 - 状态 $s$，行动 $NORTH$
@@ -3680,14 +3708,17 @@ $$
 - 奖励 $r = -500$（被幽灵吃了）
 - 下一状态 $Q$ 值 = 0
 
-> **计算差值**：$difference = [-500 + 0] - 1 = -501$
-> **更新权重**：
+> **计算差值**： $difference = [-500 + 0] - 1 = -501$
+
+**更新权重**：
+
 $$
 \begin{align}
 w_{DOT} \leftarrow 4.0 + \alpha \times (-501) \times 0.5\\
 w_{GST} \leftarrow -1.0 + \alpha \times (-501) \times 1.0
 \end{align}
 $$
+
 > 因为结果很差，两个特征的权重都降低了（幽灵特征降得更多，因为它的值是 1）。
 
 ---
@@ -3719,7 +3750,7 @@ $$
 
 ### 梯度下降
 #### 1、批量梯度下降 (Batch Gradient Descent, BGD)
->**更新规则**：$\theta_j := \theta_j + \alpha (y^{(i)} - h_\theta(x^{(i)})) x_j^{(i)}$
+>**更新规则**： $\theta_j := \theta_j + \alpha (y^{(i)} - h_\theta(x^{(i)})) x_j^{(i)}$
 
 **变量说明**：
 - $\theta_j$：第 j 个参数
@@ -3737,7 +3768,7 @@ $$
 - 训练集大时更常用
 
 ### 正规方程 (Normal Equations)
->**闭式解**：$\theta = (X^T X)^{-1} X^T \vec{y}$
+>**闭式解**： $\theta = (X^T X)^{-1} X^T \vec{y}$
 
 **变量说明**：
 - $\theta$：最优参数向量
@@ -3891,14 +3922,14 @@ $$
 
 ### L1 范数 (曼哈顿距离)
 
-> **绝对差和 (SAD)**：$SAD(i, j) = |x_{i,1} - x_{j,1}| + |x_{i,2} - x_{j,2}|$
+> **绝对差和 (SAD)**： $SAD(i, j) = |x_{i,1} - x_{j,1}| + |x_{i,2} - x_{j,2}|$
 
 **变量说明**：
 - $SAD(i, j)$：点 $i$ 和点 $j$ 之间的 $L1$ 距离
 - $x_{i,1}, x_{i,2}$：点 $i$ 的两个坐标
 - $x_{j,1}, x_{j,2}$：点 $j$ 的两个坐标
 
-> **平均绝对误差 (MAE)**：$MAE(i, j) = \frac{1}{2} \left( |x_{i,1} - x_{j,1}| + |x_{i,2} - x_{j,2}| \right)$
+> **平均绝对误差 (MAE)**： $MAE(i, j) = \frac{1}{2} \left( |x_{i,1} - x_{j,1}| + |x_{i,2} - x_{j,2}| \right)$
 
 **变量说明**：
 - $MAE(i, j)$：平均绝对误差
@@ -3906,33 +3937,33 @@ $$
 
 ### L2 范数 (欧几里得距离)
 
-> **L2 范数定义**：$\|x\|_2 = \sqrt{\sum_{i=1}^n x_i^2}, \quad x = (x_1, x_2, ..., x_n)$
+> **L2 范数定义**： $\|x\|_2 = \sqrt{\sum_{i=1}^n x_i^2}, \quad x = (x_1, x_2, ..., x_n)$
 
 **变量说明**：
 - $\|x\|_2$：向量 $x$ 的 $L2$ 范数
 - $x_i$：向量 $x$ 的第 $i$ 个分量
 - $n$：向量维度
 
-> **平方差和 (SSD)**：$SSD(i, j) = (x_{i,1} - x_{j,1})^2 + (x_{i,2} - x_{j,2})^2$
+> **平方差和 (SSD)**： $SSD(i, j) = (x_{i,1} - x_{j,1})^2 + (x_{i,2} - x_{j,2})^2$
 
 **变量说明**：
 - $SSD(i, j)$：点 $i$ 和点 $j$ 之间的平方距离
 - $x_{i,1}, x_{i,2}$：点 $i$ 的坐标
 - $x_{j,1}, x_{j,2}$：点 $j$ 的坐标
 
-> **欧几里得距离**：$ED(i, j) = \sqrt{(x_{i,1} - x_{j,1})^2 + (x_{i,2} - x_{j,2})^2}$
+> **欧几里得距离**： $ED(i, j) = \sqrt{(x_{i,1} - x_{j,1})^2 + (x_{i,2} - x_{j,2})^2}$
 
 **变量说明**：
 - $ED(i, j)$：点 $i$ 和点 $j$ 之间的欧几里得距离
 - 其他变量同上
 
-> **均方误差 (MSE)**：$MSE(i, j) = \frac{1}{2} \left( (x_{i,1} - x_{j,1})^2 + (x_{i,2} - x_{j,2})^2 \right)$
+> **均方误差 (MSE)**： $MSE(i, j) = \frac{1}{2} \left( (x_{i,1} - x_{j,1})^2 + (x_{i,2} - x_{j,2})^2 \right)$
 
 **变量说明**：
 - $MSE(i, j)$：均方误差
 - 其他变量同上
 
-> **一般形式的平方欧几里得距离**：$dist(x, y) = (x-y)^\top (x-y) = \sum_i (x_i - y_i)^2$
+> **一般形式的平方欧几里得距离**： $dist(x, y) = (x-y)^\top (x-y) = \sum_i (x_i - y_i)^2$
 
 **变量说明**：
 - $dist(x, y)$：向量 $x$ 和 $y$ 之间的平方距离
@@ -3958,7 +3989,7 @@ $$
 
 ### K-Means 作为优化问题
 
->**目标函数**：$\phi(\{x_i\}, \{a_i\}, \{c_k\}) = \sum_i dist(x_i, c_{a_i})$
+>**目标函数**： $\phi(\{x_i\}, \{a_i\}, \{c_k\}) = \sum_i dist(x_i, c_{a_i})$
 
 **变量说明**：
 - $\phi$：总距离（目标函数，要最小化）
@@ -4116,9 +4147,9 @@ $$
 
 **变量说明**：
 - $RC(C_i, C_j)$：簇 $C_i$ 和 $C_j$ 之间的相对接近度
-- $\bar{S}_{EC_{\{C_i, C_j\}}}$：两个簇之间边的平均权重
-- $\bar{S}_{EC_{C_i}}$：簇 $C_i$ 最小割二分的边平均权重
-- $\bar{S}_{EC_{C_j}}$：簇 $C_j$ 最小割二分的边平均权重
+- $\bar{S}_{EC_{\{C_i, C_j\}}}$ ：两个簇之间边的平均权重
+- $\bar{S}_{EC_{C_i}}$ ：簇 $C_i$ 最小割二分的边平均权重
+- $\bar{S}_{EC_{C_j}}$ ：簇 $C_j$ 最小割二分的边平均权重
 - $|C_i|, |C_j|$：两个簇的大小
 
 ### 合并规则
@@ -4225,7 +4256,7 @@ $$
 
 #### 匹配基指标
 
-> **精确率 (Precision)**：$prec_i = \frac{1}{n_i} \max_{j=1}^k \{ n_{ij} \}$
+> **精确率 (Precision)**： $prec_i = \frac{1}{n_i} \max_{j=1}^k \{ n_{ij} \}$
 
 **变量说明**：
 - $prec_i$：第 $i$ 个簇的精确率
@@ -4233,7 +4264,7 @@ $$
 - $n_{ij}$：第 $i$ 个簇中属于第 $j$ 个真实类别的点数
 - $\max_j$：对所有真实类别取最大值
 
-> **召回率 (Recall)**：$recall_i = \frac{1}{|T_k|} \max_j (n_{ij}), \quad k = \arg\max_j (n_{ij})$
+> **召回率 (Recall)**： $recall_i = \frac{1}{|T_k|} \max_j (n_{ij}), \quad k = \arg\max_j (n_{ij})$
 
 **变量说明**：
 - $recall_i$：第 $i$ 个簇的召回率
@@ -4242,14 +4273,14 @@ $$
 - $\arg\max_j$：找出最大值对应的 $j$
 
 
-> **F 值 (F-Measure)**：$F_i = \frac{2}{\frac{1}{prec_i} + \frac{1}{recall_i}}$
+> **F 值 (F-Measure)**： $F_i = \frac{2}{\frac{1}{prec_i} + \frac{1}{recall_i}}$
 
 **变量说明**：
 - $F_i$：第 $i$ 个簇的 $F$ 值（精确率和召回率的调和平均）
 - $prec_i$：第 $i$ 个簇的精确率
 - $recall_i$：第 $i$ 个簇的召回率
 
-> **整体 F 值**：$F = \frac{1}{r} \sum_{i=1}^r F_i$
+> **整体 F 值**： $F = \frac{1}{r} \sum_{i=1}^r F_i$
 
 **变量说明**：
 - $F$：整体 $F$ 值
@@ -4259,6 +4290,7 @@ $$
 #### 熵基指标
 
 **条件熵**：
+
 $$
 H(T | C) = -\sum_{i=1}^r \left( \frac{n_i}{n} \right) H(T | C_i) = -\sum_{i=1}^r \sum_{j=1}^k p_{ij} \log \left( \frac{p_{ij}}{p_{C_i}} \right)
 $$
@@ -4275,6 +4307,7 @@ $$
 > 完美聚类的条件熵为 0。
 
 **归一化互信息 (NMI)**：
+
 $$
 NMI(C, T) = \sqrt{\frac{I(C, T)}{H(C)} \cdot \frac{I(C, T)}{H(T)}} = \frac{I(C, T)}{\sqrt{H(C) \cdot H(T)}}
 $$
@@ -4288,6 +4321,7 @@ $$
 > $NMI$ 取值范围 [0, 1]，越接近 1 表示聚类越好。
 
 **互信息**：
+
 $$
 I(C, T) = \sum_{i=1}^r \sum_{j=1}^k p_{ij} \log \left( \frac{p_{ij}}{p_{C_i} \cdot p_{T_j}} \right)
 $$
@@ -4309,6 +4343,7 @@ $$
 | **不同簇** | FN (假负例) | TN (真负例) |
 
 **定义**：
+
 $$
 \begin{cases}
 TP = |\{(x_i, x_j) : y_i = y_j \text{ and } \hat{y}_i = \hat{y}_j\}| \\
@@ -4326,20 +4361,20 @@ $$
 - $y_i, y_j$：真实标签
 - $\hat{y}_i, \hat{y}_j$：聚类标签
 
-> **Jaccard 系数**：$Jaccard = \frac{TP}{TP + FN + FP}$
+> **Jaccard 系数**： $Jaccard = \frac{TP}{TP + FN + FP}$
 
 **变量说明**：
 - $Jaccard$ 系数：忽略真负例的真正例比例
 - 完美聚类时 $Jaccard = 1$
 
-> **Rand 指数**：$Rand = \frac{TP + TN}{N}$
+> **Rand 指数**： $Rand = \frac{TP + TN}{N}$
 
 **变量说明**：
 - $Rand$：正确分类的点对比例
 - $N = \binom{n}{2}$：总点对数
 - 完美聚类时 $Rand = 1$
 
-> **Fowlkes-Mallow 度量**：$FM = \sqrt{prec \times recall} = \frac{TP}{\sqrt{(TP + FN)(TP + FP)}}$
+> **Fowlkes-Mallow 度量**： $FM = \sqrt{prec \times recall} = \frac{TP}{\sqrt{(TP + FN)(TP + FP)}}$
 
 **变量说明**：
 - $FM$：精确率和召回率的几何平均
@@ -4463,7 +4498,7 @@ $$
 
 ### 二分类线性分类
 
-> **线性加权和**：$z = w^T x + b$
+> **线性加权和**： $z = w^T x + b$
 
 **变量说明**：
 - $z$：线性加权和（净输入）
@@ -4472,7 +4507,7 @@ $$
 - $b$：偏置
 - $w^T x$：向量内积
 
-> **阶跃激活**：$y = \begin{cases} 1 & \text{if } z \geq 0 \\ 0 & \text{if } z < 0 \end{cases}$
+> **阶跃激活**： $y = \begin{cases} 1 & \text{if } z \geq 0 \\ 0 & \text{if } z < 0 \end{cases}$
 
 **变量说明**：
 - $y$：分类结果（0 或 1）
@@ -4486,6 +4521,7 @@ $$
 
 - 添加一个恒为 1 的虚拟特征 $x_0 = 1$
 - 权重 $w_0$ 相当于偏置
+
 $$
 z = w^T x = w_0 x_0 + w_1 x_1 + ... + w_D x_D
 $$
@@ -4506,8 +4542,8 @@ $$
 | 1     | 1     | 0   |
 
 参数示例：$w_0 = 1, w_1 = -2$
-- $x_1 = 0$ 时：$1 \times 1 + (-2) \times 0 = 1 > 0$ → 输出 1
-- $x_1 = 1$ 时：$1 \times 1 + (-2) \times 1 = -1 \leq 0$ → 输出 0
+- $x_1 = 0$ 时： $1 \times 1 + (-2) \times 0 = 1 > 0$ → 输出 1
+- $x_1 = 1$ 时： $1 \times 1 + (-2) \times 1 = -1 \leq 0$ → 输出 0
 
 #### AND 门
 | $x_0$ | $x_1$ | $x_2$ | $y$ |
@@ -4517,8 +4553,8 @@ $$
 | 1     | 1     | 0     | 0   |
 | 1     | 1     | 1     | 1   |
 
-参数示例：$b = -1.5, w_1 = 1, w_2 = 1$
-- 约束：$b < 0, b+w_1 < 0, b+w_2 < 0, b+w_1+w_2 > 0$
+参数示例： $b = -1.5, w_1 = 1, w_2 = 1$
+- 约束： $b < 0, b+w_1 < 0, b+w_2 < 0, b+w_1+w_2 > 0$
 
 #### OR 门
 | $x_0$ | $x_1$ | $x_2$ | $y$ |
@@ -4539,6 +4575,7 @@ $$
 > **XOR 问题**：单层感知机无法解决 XOR，因为 XOR 不是线性可分的。
 
 **约束矛盾**：
+
 $$
 \begin{cases}
 b < 0 \\
@@ -4566,6 +4603,7 @@ $$
 ### 凸集 (Convex Set)
 
 > 集合 S 是凸的，如果 S 中任意两点的连线都完全在 S 内。
+
 $$
 x_1, x_2 \in S \Rightarrow \lambda x_1 + (1-\lambda) x_2 \in S, \quad \text{for } 0 \leq \lambda \leq 1
 $$
@@ -4613,11 +4651,11 @@ x₂ ──┴── h₂ ──┘
 **参数示例**：
 
 隐藏层：
-- $h_1$ (NAND)：$b_1 = -0.5, w_{11} = 1, w_{21} = 1$
-- $h_2$ (OR)：$b_2 = -1.5, w_{12} = 1, w_{22} = 1$
+- $h_1$ (NAND)： $b_1 = -0.5, w_{11} = 1, w_{21} = 1$
+- $h_2$ (OR)： $b_2 = -1.5, w_{12} = 1, w_{22} = 1$
 
 输出层：
-- $y$ (AND)：$b_y = -0.5, w_{h1} = 1, w_{h2} = -1$
+- $y$ (AND)： $b_y = -0.5, w_{h1} = 1, w_{h2} = -1$
 
 > 第一层把输入映射到新的特征空间，第二层在新空间中做线性分类。
 
@@ -4634,6 +4672,7 @@ x₂ ──┴── h₂ ──┘
 ### 前馈计算
 
 **一般形式**：
+
 $$
 \mathbf{h}^{(0)} = \mathbf{x} \\ 
 \mathbf{h}^{(i)} = g\left(\mathbf{W}^{(i-1)} \mathbf{h}^{(i-1)} + \mathbf{b}^{(i-1)}\right) \\
@@ -4726,6 +4765,7 @@ $$
 ### 各层梯度计算
 
 **输出层**：
+
 $$
 \frac{\partial E}{\partial y_l} = y_l - t_l \\
 \frac{\partial E}{\partial z_l} = \frac{\partial E}{\partial y_l} \cdot \frac{\partial y_l}{\partial z_l}
@@ -4739,13 +4779,14 @@ $$
 - $\frac{\partial y_l}{\partial z_l}$：激活函数的导数
 
 **隐藏层**：
+
 $$
 \frac{\partial E}{\partial y_k} = \sum_{l \in out} w_{kl} \cdot \frac{\partial E}{\partial z_l}\frac{\partial E}{\partial z_k} = \frac{\partial E}{\partial y_k} \cdot \frac{\partial y_k}{\partial z_k}
 $$
 
 **变量说明**：
 - $\frac{\partial E}{\partial y_k}$：损失对第 $k$ 个隐藏单元激活值的梯度
-- $w_{kl}\)：从隐藏单元 $k$ 到输出单元 $l$ 的权重
+- $w_{kl}$：从隐藏单元 $k$ 到输出单元 $l$ 的权重
 - $\frac{\partial E}{\partial z_l}$：上一层（更靠近输出）的梯度
 - $\sum_{l \in out}$：对所有输出单元求和
 
@@ -4800,7 +4841,7 @@ $$
 | **零填充 (Zero Padding)** | p   | 在图像边缘补 0 的圈数  |
 | **卷积核大小**              | k   | 卷积核的尺寸（如 3×3） |
 
-> **输出尺寸计算**：$\text{output size} = \frac{\text{input size} + 2p - k}{s} + 1$
+> **输出尺寸计算**： $\text{output size} = \frac{\text{input size} + 2p - k}{s} + 1$
 
 ### 卷积的作用
 
