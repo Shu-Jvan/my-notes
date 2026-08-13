@@ -43,6 +43,8 @@
 ## 1. [程序自动分析](https://www.luogu.com.cn/problem/P1955)
 具体见[[#三、并查集#6. [程序自动分析](https //www.luogu.com.cn/problem/P1955)|程序自动分析]]
 
+## 2. [火烧赤壁](https://www.luogu.com.cn/problem/P1496)
+
 ---
 # 七、图的构造
 ## 1. [查找文献](https://www.luogu.com.cn/problem/P5318)
@@ -547,3 +549,11 @@ $$
 ## 1. [语文成绩](https://www.luogu.com.cn/problem/P2367#ide)
 
 这题使用**差分算法**，但是我感觉不是很理解豆包给我讲解的这个算法的内容。
+
+## 2. [地毯](https://www.luogu.com.cn/problem/P3397)
+
+这题也是**差分+前缀和**，但是是二维的，解决办法是*化二维为一维——即每一行都做一次差分*，最后再完整遍历一遍做前缀和。注意前缀和中，是`carpet[i][j] += carpet[i][j-1];`，我一开始用的是`cout << carpet[i][j] + carpet[i][j-1];`，这样不是前缀和😂
+
+## 3. [火烧赤壁](https://www.luogu.com.cn/problem/P1496)
+
+本题使用了**差分+离散化**的思路，因为数据分布及其离散。
