@@ -3,3 +3,14 @@
 *.DS_Store
 Projects/0.建议项目.md
 Projects/3.单词本.md
+# 数据集禁止上传
+Machine Learning/4.信用卡诈骗/*.csv
+Machine Learning/4.信用卡诈骗/*.zip
+*.zip
+*.rar
+*.7z
+
+# Python缓存
+__pycache__/
+*.pyc
+*.ipynb_checkpoints
