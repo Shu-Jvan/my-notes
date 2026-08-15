@@ -670,7 +670,9 @@ S --2--> A --2--> G   总代价=4
 
 ### 示例：8 数码问题
 **原问题**：棋子只能滑动到相邻的空格
-![[8 Puzzle Problem.png]]
+
+![](images/8%20Puzzle%20Problem.png)
+
 **松弛问题 1**：棋子可以直接移动到任意位置
 - 启发式：错位棋子数（Tiles）
 - h(start) = 8
@@ -874,7 +876,8 @@ function GRAPH-SEARCH(problem, fringe) return a solution, or failure
 ### 示例 1：地图着色 (Map Coloring)
 
 **问题**：给地图上的区域着色，相邻区域颜色不同
-![](images/AI/Map%20Coloring.png)
+
+![](images/Map%20Coloring.png)
 
 |   组成   |               内容               |
 | :----: | :----------------------------: |
@@ -929,7 +932,7 @@ function GRAPH-SEARCH(problem, fringe) return a solution, or failure
 | **值域** | {1,2,...,9}          |
 | **约束** | 每行、每列、每个 3×3 区域数字都不同 |
 
-![](images/AI/Sudoku.png)
+![](images/Sudoku.png)
 
 ---
 
@@ -1028,7 +1031,7 @@ function GRAPH-SEARCH(problem, fringe) return a solution, or failure
 - 固定顺序 → 更好的分支因子！
 - 例如：{WA=red 然后 NT=green} 和 {NT=green 然后 WA=red} 是一样的
 - 每步只考虑给一个变量赋值
-![](images/AI/Map%20Coloring(Backtracking).png)
+![](images/Map%20Coloring(Backtracking).png)
 #### 思想 2：边做边检查约束
 - 只考虑不与已有赋值冲突的值
 - "增量式目标测试"
@@ -1080,7 +1083,7 @@ function RECURSIVE-BACKTRACKING(assignment, csp) returns solution or failure
 - 检查所有相邻的未赋值变量
 - 从它们的值域中删掉与新赋值冲突的值
 - 如果某个变量的值域空了 → 立即回溯
-![](images/AI/Map%20Coloring(Filter-Forward-Checking).png)
+![](images/Map%20Coloring(Filter-Forward-Checking).png)
 
 ### 效果
 - 比朴素回溯更早检测失败
@@ -1107,7 +1110,7 @@ function RECURSIVE-BACKTRACKING(assignment, csp) returns solution or failure
 #### 怎么做
 - 如果 X 失去了一个值，X 的所有邻居都需要重新检查
 - 反复检查直到没有变化
-![](images/AI/Map%20Coloring(Arc-Consistency).png)
+![](images/Map%20Coloring(Arc-Consistency).png)
 
 ### AC-3(Arc Consistency version-3) 算法
 ```txt
@@ -1234,11 +1237,11 @@ function REMOVE-INCONSISTENT-VALUES(Xᵢ, Xⱼ) returns true iff(当且仅当) s
 
 反向传递前：
 
-![](images/AI/Structure：Tree%20for%20CSP(step-1).png)
+![](images/Structure：Tree%20for%20CSP(step-1).png)
 
 反向传递后：
 
-![](images/AI/Structure：Tree%20for%20CSP(step-2).png)
+![](images/Structure：Tree%20for%20CSP(step-2).png)
 
 **步骤 2：正向赋值**
 - 从 X₁ 到 Xₙ，给每个 Xi 赋一个与父节点一致的值
@@ -2783,7 +2786,7 @@ D  2    4    2    ∞
 - 10% 的时间，偏向右边
 - 如果前方是墙，原地不动
 
-![](images/AI/Grid-World.png)
+![](images/Grid-World.png)
 
 ### MDP 的组成
 | 组成       | 符号            | 说明                                     |
@@ -2973,7 +2976,7 @@ $$
 | **最优策略** | $\pi^*(s)$  | 状态 s 下的最优行动                |
 
 ### 状态与 Q 状态
-![](images/AI/Values-of-States.png)
+![](images/Values-of-States.png)
 
 ### Bellman 方程(3个)
 #### 1、状态值与 Q 值的关系
@@ -3070,7 +3073,7 @@ $\| BV - BV' \| \leq \gamma \| V - V' \|$
 - 两个行动：Slow（慢开）、Fast（快开）
 - 快开奖励更高，但容易过热
 - 过热 = 游戏结束，大惩罚
-![](images/AI/Racing.png)
+![](images/Racing.png)
 
 #### 转移与奖励
 | 当前状态       | 行动     | 下一个状态      | 概率  | 奖励  |
@@ -3356,7 +3359,7 @@ $$\widehat{T}(s, a, s') = \frac{\text{count}(s, a, s')}{\text{count}(s, a)}$$
 
 ### 示例：网格世界
 **观测到的片段**：
-![](images/AI/Model-Based-Learning(1).png)
+![](images/Model-Based-Learning(1).png)
 
 **计算转移概率**：
 
@@ -3367,8 +3370,10 @@ $$
 \end{cases}
 $$
 
-![](images/AI/Model-Based-Learning(2).png)
+![](images/Model-Based-Learning(2).png)
+
 ### 优缺点
+
 | 优点               | 缺点        |
 | ---------------- | --------- |
 | 高效利用经验（样本复杂度低）   | 状态空间大时不适用 |
@@ -3496,7 +3501,7 @@ $$
 > 每次观察到一个转移，就把 V(s) 往 "更符合邻居 V(s')" 的方向移动一点点。
 
 #### TD 学习示例
-![](images/AI/TD-Learning.png)
+![](images/TD-Learning.png)
 **设定**： $\gamma = 1，\alpha = 1/2$
 
 **初始状态**：
@@ -3643,7 +3648,7 @@ $$
 | 探索函数    | 遗憾最少，收敛最快    |
 > 最小化遗憾不只是要学会最优，*还要以最优的方式学会*。
 
-![](images/AI/Optimality-exploration(RL).png)
+![](images/Optimality-exploration(RL).png)
 
 ---
 
@@ -3709,7 +3714,9 @@ $$
 > 直观理解：如果结果出乎意料地好，就增加活跃特征的权重；如果出乎意料地差，就减少。
 
 ### 示例：Q-Pacman
-![](images/AI/Q-Pacman.png)
+
+![](images/Q-Pacman.png)
+
 > **初始 Q 函数**： $Q(s, a) = 4.0f_{DOT}(s, a) - 1.0f_{GST}(s, a)$
 
 **一次转移**：
@@ -3738,6 +3745,7 @@ $$
 ## 八、线性回归基础
 
 ### 线性模型
+
 $$
 h_\theta(x) = \theta_0 x_0 + \theta_1 x_1 + \theta_2 x_2 + ... + \theta_d x_d = \theta^T x
 $$
@@ -3749,11 +3757,13 @@ $$
 - $\theta^T x$：向量**内积**形式
 
 ### 最小二乘损失
+
 $$
 J(\theta) = \frac{1}{2} \sum_{i=1}^n (h_\theta(x^{(i)}) - y^{(i)})^2
 $$
 
 **变量说明**：
+
 - $J(\theta)$：损失函数（总误差）
 - $h_\theta(x^{(i)})$：第 i 个样本的预测值
 - $y^{(i)}$：第 i 个样本的真实值
@@ -3761,10 +3771,13 @@ $$
 - $\frac{1}{2}$：为了求导方便加的常数
 
 ### 梯度下降
+
 #### 1、批量梯度下降 (Batch Gradient Descent, BGD)
+
 >**更新规则**： $\theta_j := \theta_j + \alpha (y^{(i)} - h_\theta(x^{(i)})) x_j^{(i)}$
 
 **变量说明**：
+
 - $\theta_j$：第 j 个参数
 - $\alpha$：学习率
 - $y^{(i)} - h_\theta(x^{(i)})$：预测误差
@@ -3773,16 +3786,20 @@ $$
 > 遍历整个训练集，每个样本都更新一次参数。
 
 #### 2、随机梯度下降 (Stochastic Gradient Descent, SGD)
+
 **特点**：
+
 - 每看一个样本就更新一次参数
 - 不需要等整个训练集就能开始进步
 - 通常比批量梯度下降更快接近最小值
 - 训练集大时更常用
 
 ### 正规方程 (Normal Equations)
+
 >**闭式解**： $\theta = (X^T X)^{-1} X^T \vec{y}$
 
 **变量说明**：
+
 - $\theta$：最优参数向量
 - $X$：设计矩阵（每行一个样本）
 - $X^T$：X 的转置
@@ -3792,10 +3809,13 @@ $$
 > 可以直接计算出最优参数，不需要迭代。
 
 ### 过拟合 (Overfitting)
+
 > 模型太复杂，记住了训练数据的噪声，泛化能力差。
 
 **示例**：15 次多项式完美拟合所有点，但在新数据上表现很差。
+
 **解决方法**：
+
 - 减少特征数量
 - 正则化
 - 增加训练数据
@@ -3804,7 +3824,9 @@ $$
 
 ## 🤜九、总结
 
+
 ### 强化学习方法对比
+
 |   方法    |  类型  |     学习目标     | 是否需要模型 |
 | :-----: | :--: | :----------: | :----: |
 | 基于模型学习  | 模型学习 | 先学 T 和 R，再求解 | 是（自己学） |
@@ -3813,6 +3835,7 @@ $$
 | $Q$ 学习  |  主动  |    $Q$ 值     |   否    |
 
 ### 核心思想
+
 1. **从经验中学习**：不需要知道环境模型，直接从交互中学习
 2. **时序差分**：每一步都更新，利用状态之间的联系
 3. **探索 vs 利用**：在收集信息和获得奖励之间权衡
