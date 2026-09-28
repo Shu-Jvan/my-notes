@@ -570,8 +570,18 @@ $$
 
 ---
 
-# 二一、树状数组
+# 二十一、树状数组
 
 ## 1.[P4375 [USACO18OPEN] Out of Sorts G - 洛谷](https://www.luogu.com.cn/problem/P4375)
 
 这题使用了树状数组，但是我还是不理解（26.09.22）。
+
+---
+
+# 二十二、悬线法
+
+## 1.[玉蟾宫](https://www.luogu.com.cn/problem/P4147)
+
+## 2.[长方形](https://www.luogu.com.cn/problem/P1950)
+
+这题使用悬线法我算是明白了，原理其实很简单，就是两条线包住一个范围。
